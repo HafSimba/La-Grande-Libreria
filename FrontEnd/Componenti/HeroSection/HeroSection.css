@@ -1,0 +1,65 @@
+:root {
+  --cmp-bg: #0f172a;
+  --cmp-text: #f8fafc;
+  --cmp-accent: #22c55e;
+  --cmp-overlay: rgba(15, 23, 42, 0.45);
+}
+
+.cmp-hero {
+  min-height: 70vh;
+  width: 100%;
+  display: grid;
+  align-items: center;
+  background: linear-gradient(var(--cmp-overlay), var(--cmp-overlay)), var(--cmp-bg);
+  background-size: cover;
+  background-position: center;
+  color: var(--cmp-text);
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+}
+
+.cmp-hero-content {
+  width: 100%;
+  max-width: 720px;
+}
+
+.cmp-hero-title {
+  margin: 0 0 0.8rem;
+  font-size: 2rem;
+  line-height: 1.15;
+}
+
+.cmp-hero-subtitle {
+  margin: 0 0 1.2rem;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.cmp-hero-btn {
+  display: inline-block;
+  text-decoration: none;
+  background: var(--cmp-accent);
+  color: #052e16;
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+}
+
+.cmp-hero-btn:hover {
+  filter: brightness(0.95);
+}
+
+@media (min-width: 768px) {
+  .cmp-hero {
+    min-height: 78vh;
+    padding: 3rem 2rem;
+  }
+
+  .cmp-hero-title {
+    font-size: 2.8rem;
+  }
+
+  .cmp-hero-subtitle {
+    font-size: 1.1rem;
+  }
+}

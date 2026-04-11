@@ -1,0 +1,73 @@
+:root {
+  --cmp-bg: #ffffff;
+  --cmp-text: #111827;
+  --cmp-accent: #2563eb;
+  --cmp-border: #d1d5db;
+}
+
+.cmp-login {
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+  padding: 1rem;
+  border: 1px solid var(--cmp-border);
+  border-radius: 12px;
+  background: var(--cmp-bg);
+  color: var(--cmp-text);
+}
+
+.cmp-login-title {
+  margin: 0 0 0.9rem;
+  font-size: 1.25rem;
+}
+
+.cmp-login-form {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.cmp-login-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.cmp-login-input {
+  border: 1px solid var(--cmp-border);
+  border-radius: 8px;
+  padding: 0.6rem 0.75rem;
+  font-size: 0.95rem;
+}
+
+.cmp-login-input:focus {
+  outline: 2px solid rgba(37, 99, 235, 0.2);
+  border-color: var(--cmp-accent);
+}
+
+.cmp-login-btn {
+  margin-top: 0.4rem;
+  border: 0;
+  border-radius: 8px;
+  padding: 0.65rem 0.9rem;
+  background: var(--cmp-accent);
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cmp-login-btn:disabled,
+.cmp-login-input:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.cmp-login-error {
+  margin: 0.2rem 0;
+  color: #dc2626;
+  font-size: 0.9rem;
+}
+
+@media (min-width: 768px) {
+  .cmp-login {
+    padding: 1.15rem;
+  }
+}
