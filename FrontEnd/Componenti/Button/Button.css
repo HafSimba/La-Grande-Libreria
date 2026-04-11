@@ -1,0 +1,59 @@
+.cmp-button {
+    --cmp-bg: #0f172a;
+    --cmp-text: #f8fafc;
+    --cmp-accent: #0ea5e9;
+    --cmp-border: #cbd5e1;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.5rem;
+    padding: 0.55rem 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.65rem;
+    text-decoration: none;
+    font: inherit;
+    font-weight: 600;
+    line-height: 1;
+    cursor: pointer;
+    transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+.cmp-button:hover {
+    transform: translateY(-1px);
+}
+
+.cmp-button:focus-visible {
+    outline: 2px solid var(--cmp-accent);
+    outline-offset: 2px;
+}
+
+.cmp-button.is-variant-primary {
+    background: var(--cmp-bg);
+    color: var(--cmp-text);
+}
+
+.cmp-button.is-variant-secondary {
+    background: #e2e8f0;
+    color: #0f172a;
+    border-color: var(--cmp-border);
+}
+
+.cmp-button.is-variant-ghost {
+    background: transparent;
+    color: #0f172a;
+    border-color: var(--cmp-border);
+}
+
+.cmp-button.is-disabled,
+.cmp-button[aria-disabled="true"] {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+@media (min-width: 768px) {
+    .cmp-button {
+        min-height: 2.7rem;
+        padding: 0.65rem 1.1rem;
+    }
+}

@@ -1,0 +1,99 @@
+.cmp-carosello {
+    --cmp-bg: #ffffff;
+    --cmp-text: #0f172a;
+    --cmp-accent: #0ea5e9;
+    --cmp-border: #cbd5e1;
+
+    display: grid;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 40rem;
+    padding: 0.75rem;
+    border: 1px solid var(--cmp-border);
+    border-radius: 0.9rem;
+    background: var(--cmp-bg);
+    color: var(--cmp-text);
+}
+
+.cmp-carosello__viewport {
+    position: relative;
+    border-radius: 0.7rem;
+    overflow: hidden;
+}
+
+.cmp-carosello__image {
+    width: 100%;
+    height: 15rem;
+    object-fit: cover;
+    display: block;
+}
+
+.cmp-carosello__card {
+    position: absolute;
+    left: 0.6rem;
+    right: 0.6rem;
+    bottom: 0.6rem;
+    display: grid;
+    gap: 0.35rem;
+    padding: 0.6rem;
+    border-radius: 0.65rem;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.cmp-carosello__title,
+.cmp-carosello__description,
+.cmp-carosello__counter {
+    margin: 0;
+}
+
+.cmp-carosello__description {
+    font-size: 0.92rem;
+    color: #334155;
+}
+
+.cmp-carosello__controls,
+.cmp-carosello__dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+}
+
+.cmp-carosello__control,
+.cmp-carosello__action,
+.cmp-carosello__dot {
+    border: 1px solid var(--cmp-border);
+    border-radius: 0.55rem;
+    background: #f8fafc;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+}
+
+.cmp-carosello__control,
+.cmp-carosello__action {
+    padding: 0.4rem 0.75rem;
+}
+
+.cmp-carosello__dot {
+    width: 0.72rem;
+    height: 0.72rem;
+    border-radius: 999px;
+    padding: 0;
+}
+
+.cmp-carosello__dot.is-active {
+    background: var(--cmp-accent);
+    border-color: var(--cmp-accent);
+}
+
+.cmp-carosello button:focus-visible {
+    outline: 2px solid var(--cmp-accent);
+    outline-offset: 2px;
+}
+
+@media (min-width: 768px) {
+    .cmp-carosello__image {
+        height: 18rem;
+    }
+}
