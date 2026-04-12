@@ -1,0 +1,23 @@
+.cmp-carosello-section {
+    padding: 2rem 0;
+    background: #0f172a;
+}
+
+.cmp-carosello-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.cmp-carosello-slide img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+@media (max-width:768px) {
+    .cmp-carosello-section {
+        padding: 1.5rem 0
+    }
+}
