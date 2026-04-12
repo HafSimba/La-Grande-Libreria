@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap");
+
+:root {
+  /* Palette globale: cambia questi token per rifare il tema in pochi minuti. */
+  --bg: #f4f2ec;
+  --surface: #fffdf9;
+  --line: #dfd8cb;
+  --text-main: #1a2f25;
+  --text-soft: #4f6258;
+  --brand-dark: #2b7a5b;
+
+  /* Font base del progetto: sostituisci con famiglia coerente al brand della traccia. */
+  font-family: "Manrope", "Segoe UI", sans-serif;
+  color: var(--text-main);
+  background: var(--bg);
+  line-height: 1.45;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  /* Box model prevedibile per ogni componente. */
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  /* Sfondo leggermente decorativo: mantieni contrasto sufficiente per leggibilita. */
+  background:
+    radial-gradient(circle at 6% 0%, rgba(255, 186, 73, 0.12), transparent 25%),
+    radial-gradient(circle at 94% 100%, rgba(43, 122, 91, 0.08), transparent 26%),
+    var(--bg);
+}
+
+h1,
+h2,
+h3 {
+  /* Font titoli separato per dare gerarchia visiva forte. */
+  font-family: "Space Grotesk", "Manrope", sans-serif;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  /* Scala tipografica fluida per adattarsi a desktop e mobile. */
+  font-size: clamp(1.3rem, 2vw, 1.7rem);
+}
+
+p {
+  /* Reset margine paragrafo per gestire spacing via layout container. */
+  margin: 0;
+}
