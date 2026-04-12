@@ -40,25 +40,117 @@ E il riferimento pratico principale per capire:
 - come organizzare la struttura di un progetto frontend
 - come avviare un template in sviluppo locale
 
-## Avvio dei progetti nella monorepo
+## Tutorial avvio progetti completi
 
-Poiche la repository contiene progetti separati, per avviarne uno devi prima entrare nella cartella del progetto specifico.
+In repository sono presenti piu aree, ma i progetti completi avviabili (frontend + backend) dentro EsempiCompleti sono:
 
-Flusso generale:
+- ArtigianiLocali
+- EsempioSimulazione
 
-1. spostati nella cartella del progetto
-2. installa le dipendenze
-3. avvia il server di sviluppo
+Nota importante: entrambi i backend usano la porta 8080. Avviali uno alla volta, oppure cambia la porta in application.properties.
 
-Esempio attuale (valido ora):
+### Prerequisiti
+
+- Java 21
+- Node.js (consigliato LTS recente) e npm
+- Maven Wrapper gia incluso nei progetti backend
+- MySQL locale solo per EsempioSimulazione
+
+### 1) ArtigianiLocali (backend Spring Boot + frontend React/Vite)
+
+#### Avvio backend
+
+Windows:
+
+```powershell
+cd EsempiCompleti/ArtigianiLocali/artigianibackend
+.\mvnw.cmd spring-boot:run
+```
+
+macOS/Linux:
+
+```bash
+cd EsempiCompleti/ArtigianiLocali/artigianibackend
+./mvnw spring-boot:run
+```
+
+Servizi utili backend:
+
+- API base: http://localhost:8080
+- Swagger UI: http://localhost:8080/swagger-ui.html
+- H2 Console: http://localhost:8080/h2-console
+
+#### Avvio frontend
+
+```bash
+cd EsempiCompleti/ArtigianiLocali/artigianifrontend
+npm install
+npm run dev
+```
+
+Frontend disponibile su: http://localhost:5173
+
+Nota: il frontend usa di default il backend su http://localhost:8080 (oppure VITE_API_URL se configurata).
+
+### 2) EsempioSimulazione (GreenTechBackEnd + frontend React/Vite)
+
+#### Preparazione database MySQL
+
+Prima di avviare il backend, crea il database (se non esiste):
+
+```sql
+CREATE DATABASE greentech;
+```
+
+Verifica poi i parametri in:
+
+- EsempiCompleti/EsempioSimulazione/backend/GreenTechBackEnd/src/main/resources/application.properties
+
+Valori attuali:
+
+- url: jdbc:mysql://localhost:3306/greentech
+- username: jdbcuser
+- password: cancerkid123
+
+Se il tuo ambiente e diverso, aggiorna questi valori.
+
+#### Avvio backend
+
+Windows:
+
+```powershell
+cd EsempiCompleti/EsempioSimulazione/backend/GreenTechBackEnd
+.\mvnw.cmd spring-boot:run
+```
+
+macOS/Linux:
+
+```bash
+cd EsempiCompleti/EsempioSimulazione/backend/GreenTechBackEnd
+./mvnw spring-boot:run
+```
+
+#### Avvio frontend
+
+```bash
+cd EsempiCompleti/EsempioSimulazione/frontend
+npm install
+npm run dev
+```
+
+Frontend disponibile su: http://localhost:5173
+
+Nota: il frontend chiama il backend su http://localhost:8080 con endpoint /registrazione/*.
+
+### 3) TemplateLanding (solo frontend)
+
+Resta disponibile anche il template frontend standalone:
 
 ```bash
 cd FrontEnd/TemplateLanding
 npm install
 npm run dev
 ```
-
-Nota: al momento il flusso di avvio e documentato per `TemplateLanding`. In seguito verranno aggiunti altri template/progetti con relative istruzioni.
 
 ## Collaborazione
 
