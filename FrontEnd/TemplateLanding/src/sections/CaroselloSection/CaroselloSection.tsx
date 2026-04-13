@@ -1,4 +1,3 @@
-import React from 'react'
 import Carosello from '../../components/Carosello/Carosello'
 import './CaroselloSection.css'
 

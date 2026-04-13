@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import type { Proposta } from "../types/Proposta";
 
 export const useApi = (url: string) => {
   const [data, setData] = useState<Proposta[]>([]);
