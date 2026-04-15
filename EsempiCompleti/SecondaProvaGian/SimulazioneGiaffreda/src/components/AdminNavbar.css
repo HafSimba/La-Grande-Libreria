@@ -1,0 +1,26 @@
+.admin-navbar {
+    display: flex;
+    align-items: center;
+    background: var(--color-primary);
+    padding: .75rem 1rem;
+    color: #fff;
+}
+
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 1rem;
+    font-weight: var(--font-weight);
+}
+
+.nav-btn {
+    background: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-weight: var(--font-weight);
+}
+
+.nav-btn:hover {
+    text-decoration: underline;
+}

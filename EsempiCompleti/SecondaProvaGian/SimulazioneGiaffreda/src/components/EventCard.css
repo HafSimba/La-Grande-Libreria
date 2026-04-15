@@ -1,0 +1,17 @@
+.event-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid #444;
+    border-radius: .25rem;
+    padding: 1rem;
+    margin: .5rem 0;
+    color: var(--color-text);
+}
+
+.event-card h3 {
+    margin: .5rem 0;
+}
+
+.event-card .date {
+    font-size: .85rem;
+    color: #888;
+}

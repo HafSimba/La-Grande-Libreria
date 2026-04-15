@@ -1,0 +1,97 @@
+:root {
+  /* Theme palette */
+  --color-primary: #ffeb3b;
+  /* bright yellow (amber) – used for links, accents */
+  --color-primary-lt: #ffc107;
+  /* lighter yellow for hover/focus */
+  --color-bg: #222222;
+  /* dark background so yellow pops */
+  --color-text: #ffffff;
+  /* light text on dark background */
+  --font-family: system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-weight: 700;
+  /* bold everywhere */
+  --section-padding: 4rem 0;
+  /* vertical padding for each section */
+}
+
+/* ────────────────────────────────────────────────────────
+   BASE & RESETS
+   ──────────────────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  /* smooth scrolling for the `href="#section"` links */
+  scroll-behavior: smooth;
+  font-size: 16px;
+  /* baseline, easy to scale */
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ────────────────────────────────────────────────────────
+   TEXT ELEMENTS
+   ──────────────────────────────────────────────────────── */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 1rem 0;
+  font-weight: var(--font-weight);
+  color: var(--color-text);
+}
+
+p,
+ul,
+ol,
+blockquote {
+  margin: 0 0 1.5rem 0;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover,
+a:focus {
+  color: var(--color-primary-lt);
+}
+
+/* ────────────────────────────────────────────────────────
+   CONTAINER
+   ──────────────────────────────────────────────────────── */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  /* horizontal gutters */
+}
+
+/* ────────────────────────────────────────────────────────
+   SECTION STYLES – optional but handy
+   ──────────────────────────────────────────────────────── */
+
+.section {
+  padding: var(--section-padding);
+}

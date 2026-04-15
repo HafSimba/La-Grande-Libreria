@@ -1,0 +1,40 @@
+.hero {
+    /* Use the background image placed in public/images */
+    background: url('/images/hero-bg.jpg') no-repeat center/cover;
+    height: 100vh;
+    /* full viewport height */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text);
+    text-align: center;
+    font-family: var(--font-family);
+    font-weight: var(--font-weight);
+    overflow: hidden;
+}
+
+/* Optional: dark overlay to increase text contrast */
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 0;
+}
+
+.hero-title {
+    position: relative;
+    z-index: 1;
+    font-size: 4rem;
+    line-height: 1.1;
+    color: var(--color-primary);
+    padding: 0 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+}

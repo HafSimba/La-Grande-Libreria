@@ -1,0 +1,9 @@
+{
+    "java.import.maven.enabled": true,
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "java.project.sourcePaths": [
+        "culturalmerge/src/main/java",
+        "culturalmerge/src/test/java"
+    ],
+    "java.project.outputPath": "culturalmerge/target/classes"
+}

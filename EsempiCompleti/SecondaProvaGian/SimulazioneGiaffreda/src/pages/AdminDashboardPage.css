@@ -1,0 +1,11 @@
+.admin-dashboard .main-content {
+    padding: 2rem 1rem;
+    background: var(--color-bg);
+    color: var(--color-text);
+}
+
+.event-list {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}

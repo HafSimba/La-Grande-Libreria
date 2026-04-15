@@ -1,0 +1,86 @@
+/* Section wrapper – consistent with global theme */
+.elenco-eventi {
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-family);
+    padding: 4rem 0;
+    text-align: center;
+    font-weight: var(--font-weight);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: var(--color-primary);
+}
+
+/* Carousel container */
+.carousel {
+    overflow: hidden;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.6s ease-in-out;
+    width: 300%;
+    /* 3 cards */
+}
+
+/* Card styling */
+.event-card {
+    flex: 0 0 100%;
+    /* one card at a time */
+    box-sizing: border-box;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 0.5rem;
+    margin: 0 1rem;
+    color: var(--color-text);
+    text-align: left;
+}
+
+.event-title {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-primary);
+}
+
+.event-categoria {
+    display: inline-block;
+    margin-bottom: 1rem;
+    padding: 0.25rem 0.5rem;
+    background: var(--color-primary-lt);
+    color: #000;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+}
+
+.event-descrizione {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.event-autore a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.event-autore a:hover,
+.event-autore a:focus {
+    color: var(--color-primary-lt);
+}
+
+/* Optional: small responsive tweak */
+@media (max-width: 768px) {
+    .event-card {
+        padding: 1rem;
+    }
+
+    .event-title {
+        font-size: 1.5rem;
+    }
+}

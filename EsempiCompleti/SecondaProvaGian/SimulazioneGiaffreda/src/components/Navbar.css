@@ -1,0 +1,66 @@
+.navbar {
+    position: sticky;
+    top: 0;
+    background: #222;
+    /* dark background for contrast */
+    padding: 0.8rem 2rem;
+    font-family: system-ui, sans-serif;
+    font-weight: 700;
+    /* bold */
+    color: #ffeb3b;
+    /* bright yellow */
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-list a {
+    text-decoration: none;
+    color: inherit;
+    /* keep the yellow color */
+    transition: color 0.2s ease;
+}
+
+.nav-list a:hover,
+.nav-list a:focus {
+    color: #ffc107;
+    /* lighter yellow on hover */
+}
+
+/* src/components/Navbar.css */
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-weight: var(--font-weight);
+    padding: .35rem .7rem;
+}
+
+.nav-admin {
+    margin-left: auto;
+    /* posiziona il pulsante a destra (facoltativo) */
+}
+
+.btn-admin {
+    background: var(--color-primary);
+    /* colore principale del tema */
+    color: #fff;
+    border: none;
+    border-radius: .25rem;
+    font-weight: var(--font-weight);
+    padding: .35rem .75rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: background .15s ease;
+}
+
+.btn-admin:hover,
+.btn-admin:focus {
+    background: darken(var(--color-primary), 10%);
+    /* puoi usare un mixin SCSS o un valore statico */
+    outline: none;
+}

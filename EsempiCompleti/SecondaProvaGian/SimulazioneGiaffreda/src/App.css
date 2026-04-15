@@ -1,0 +1,23 @@
+/* ────────────────────────────────────────────────────────
+   BASIC LAYOUT STYLES – complementing the global CSS
+   ──────────────────────────────────────────────────────── */
+
+.app {
+  /* ensures the app expands to full height for sticky header */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+  /* take up remaining space so footer can stick */
+}
+
+/* Optional: footer styling (if you plan to add one) */
+footer {
+  background: var(--color-bg);
+  color: var(--color-text);
+  padding: 2rem 0;
+  text-align: center;
+}
