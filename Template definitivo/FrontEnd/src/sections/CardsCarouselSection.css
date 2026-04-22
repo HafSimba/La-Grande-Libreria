@@ -1,0 +1,65 @@
+.cards-carousel {
+    width: min(1120px, 100%);
+    margin: 22px auto 0;
+}
+
+.cards-carousel__track {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(250px, 340px);
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 4px 2px 12px;
+}
+
+.cards-carousel__track::-webkit-scrollbar {
+    height: 9px;
+}
+
+.cards-carousel__track::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: rgba(17, 138, 178, 0.45);
+}
+
+.cards-carousel__card {
+    scroll-snap-align: start;
+    background: linear-gradient(155deg, #ffffff, #eef8ff);
+    border: 1px solid rgba(17, 138, 178, 0.2);
+    border-radius: 18px;
+    padding: 22px;
+    min-height: 260px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 14px 30px -20px rgba(16, 47, 72, 0.48);
+}
+
+.cards-carousel__title {
+    margin: 0;
+    color: #0f2a43;
+    font-size: 1.2rem;
+}
+
+.cards-carousel__description {
+    margin: 12px 0 20px;
+    color: #2a4b68;
+    line-height: 1.5;
+}
+
+.cards-carousel__button {
+    border: 0;
+    border-radius: 999px;
+    padding: 10px 14px;
+    background: #118ab2;
+    color: #ffffff;
+    font-weight: 700;
+    cursor: pointer;
+    align-self: flex-start;
+}
+
+@media (max-width: 760px) {
+    .cards-carousel__track {
+        grid-auto-columns: minmax(220px, 85vw);
+    }
+}

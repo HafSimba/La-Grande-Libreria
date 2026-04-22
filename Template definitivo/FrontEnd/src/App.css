@@ -1,0 +1,8 @@
+.landing-shell {
+  min-height: 100vh;
+  padding: 22px;
+  background:
+    radial-gradient(circle at 85% 0%, rgba(17, 138, 178, 0.16), transparent 36%),
+    radial-gradient(circle at 0% 100%, rgba(76, 201, 240, 0.18), transparent 34%),
+    #f4fbff;
+}

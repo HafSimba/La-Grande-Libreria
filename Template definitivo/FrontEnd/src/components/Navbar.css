@@ -1,0 +1,78 @@
+.landing-navbar {
+    width: min(1120px, 100%);
+    margin: 0 auto;
+    padding: 14px 24px;
+    border-radius: 16px;
+    border: 1px solid rgba(22, 43, 66, 0.16);
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 12px 34px -18px rgba(11, 30, 48, 0.5);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.landing-navbar__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #0d2438;
+    text-decoration: none;
+}
+
+.landing-navbar__logo {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #118ab2, #4cc9f0);
+    box-shadow: 0 0 0 4px rgba(76, 201, 240, 0.2);
+}
+
+.landing-navbar__brandText {
+    font-size: 1.08rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+
+.landing-navbar__menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.landing-navbar__link {
+    color: #173651;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 6px 0;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.landing-navbar__link:hover,
+.landing-navbar__link:focus-visible {
+    color: #0d2438;
+    border-color: #118ab2;
+    outline: none;
+}
+
+@media (max-width: 760px) {
+    .landing-navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 16px 18px;
+    }
+
+    .landing-navbar__menu {
+        width: 100%;
+        flex-wrap: wrap;
+        row-gap: 10px;
+        column-gap: 18px;
+    }
+}
