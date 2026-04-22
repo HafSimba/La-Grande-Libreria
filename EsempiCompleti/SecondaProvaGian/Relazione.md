@@ -98,3 +98,15 @@ Lo scambio dati avviene dal front end React verso il backend Spring Boot tramite
 Ho usato principalmente questi metodi HTTP: GET per leggere gli eventi, POST per inserire nuovi eventi e per la login admin, PUT per aggiornare eventi e DELETE per eliminare eventi.
 Il backend risponde con status e dati JSON, e nel front end in base alla risposta mostro feedback all utente: se la richiesta va a buon fine mostro conferma di successo, se fallisce mostro stato di errore (ad esempio failed to fetch).
 In questo modo l utente ha sempre un riscontro immediato su quello che ha fatto.
+
+
+
+
+
+
+
+
+
+
+
+
