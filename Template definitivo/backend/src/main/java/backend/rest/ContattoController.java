@@ -19,23 +19,29 @@ import jakarta.validation.constraints.Size;
 @RequestMapping("/contatti")
 public class ContattoController {
 
+	// CUSTOM ESAME:
+	// se cambi dominio del progetto, puoi cambiare "/contatti" in "/eventi", "/prodotti" o simile.
+	// Dopo averlo cambiato, aggiorna anche gli URL fetch nel frontend.
 	@Autowired
 	private ContattoService contattoService;
 
-	// COME PERSONALIZZARE CONTRATTO API:
-	// - Se aggiungi un campo nel form frontend, aggiungi qui un nuovo @RequestParam
-	// con lo stesso nome usato nel payload form-urlencoded.
+	// CUSTOM ESAME:
+	// ogni @RequestParam deve avere lo stesso nome della chiave in URLSearchParams dentro useForm.ts.
+	// Questo endpoint riceve application/x-www-form-urlencoded, non JSON.
 	@PostMapping("/invia")
 	public Contatto inviaContatto(
 			@RequestParam @Size(max = 120, message = "Max 120 caratteri") String nome,
 			@RequestParam @Size(max = 150, message = "Max 150 caratteri") String email,
 			@RequestParam @Size(max = 40, message = "Max 40 caratteri") String telefono,
 			@RequestParam @Size(max = 3000, message = "Max 3000 caratteri") String messaggio) {
-		return contattoService.salvaContatto(nome, email, telefono, messaggio);
+		return contattoService.contatto(nome, email, telefono, messaggio);
 	}
 
+	// CUSTOM ESAME:
+	// questo GET viene usato dalla pagina lista tramite useApi.
+	// Se cambi path, aggiorna l'URL nella pagina React.
 	@GetMapping("/tutti")
 	public List<Contatto> mostraTutti() {
-		return contattoService.trovaTutti();
+		return contattoService.mostraTutti();
 	}
 }

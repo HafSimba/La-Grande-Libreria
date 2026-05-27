@@ -11,12 +11,18 @@ public class ContattoService {
 	@Autowired
 	private ContattoRepository contattoRepository;
 
-	public Contatto salvaContatto(String nome, String email, String telefono, String messaggio) {
+	// CUSTOM ESAME:
+	// questo metodo riceve i dati dal controller, crea l'entity e la salva.
+	// Se aggiungi campi, aggiungili nella firma del metodo e nel new Contatto(...).
+	public Contatto contatto(String nome, String email, String telefono, String messaggio) {
 		Contatto contatto = new Contatto(nome, email, telefono, messaggio);
 		return contattoRepository.save(contatto);
 	}
 
-	public List<Contatto> trovaTutti() {
+	// CUSTOM ESAME:
+	// questo metodo alimenta la pagina lista del frontend.
+	// Per l'esame basta spesso findAll(); aggiungi query custom solo se la traccia lo richiede.
+	public List<Contatto> mostraTutti() {
 		return contattoRepository.findAll();
 	}
 }

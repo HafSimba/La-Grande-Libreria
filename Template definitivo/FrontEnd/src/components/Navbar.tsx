@@ -1,16 +1,23 @@
 import './Navbar.css'
+import { useNavigate } from 'react-router'
 
 const navItems = [
-    { label: 'Home', href: '#home' },
+    { label: 'Home', href: '#hero' },
     { label: 'Chi Siamo', href: '#chi-siamo' },
     { label: 'Servizi', href: '#servizi' },
-    { label: 'Contatti', href: '#contatti' },
+    { label: 'Partecipa', href: '#form' },
 ]
 
 export function Navbar() {
+    const navigate = useNavigate()
+
+    const handleContatti = () => {
+        navigate('/contatti')
+    }
+
     return (
         <header className="landing-navbar" id="home">
-            <a className="landing-navbar__brand" href="#home" aria-label="Vai alla Home">
+            <a className="landing-navbar__brand" href="#hero" aria-label="Vai alla Home">
                 <span className="landing-navbar__logo" aria-hidden="true" />
                 <span className="landing-navbar__brandText">Logo</span>
             </a>
@@ -24,6 +31,11 @@ export function Navbar() {
                             </a>
                         </li>
                     ))}
+                    <li>
+                        <a className="landing-navbar__link" onClick={handleContatti}>
+                            Contatti
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </header>
