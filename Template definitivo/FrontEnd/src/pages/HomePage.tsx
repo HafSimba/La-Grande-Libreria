@@ -3,6 +3,7 @@ import { Footer } from '../components/Footer'
 import { Form } from '../components/Form'
 import { Hero } from '../components/Hero'
 import { Navbar } from '../components/Navbar'
+import { StudentiVotiSection } from '../components/StudentiVotiSection'
 
 export const HomePage = () => {
   return (
@@ -40,6 +41,11 @@ export const HomePage = () => {
           <Form />
         </div>
       </section>
+
+      {/* CUSTOM ESAME:
+          se la traccia richiede solo una landing con form semplice, elimina questa riga e l'import.
+          Se richiede inserimento dati + lista + filtro, customizza StudentiVotiSection. */}
+      <StudentiVotiSection />
 
       <Footer />
     </>

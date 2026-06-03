@@ -214,3 +214,8 @@ Test manuale:
 - Frontend e backend usano gli stessi endpoint.
 - Build frontend e test backend passano.
 
+## Modulo opzionale studenti/voti
+
+Il modulo `StudentiVotiSection` serve per tracce in cui devi inserire dati, mostrarli dal database e filtrarli. Per usarlo tieni in `HomePage.tsx` l'import e il tag `<StudentiVotiSection />`; per rimuoverlo elimina quel tag/import e, se non serve proprio, cancella anche `components/StudentiVotiSection.tsx`, `hooks/useStudentiVoti.ts`, `types/StudenteVoto.ts` e i file backend `StudenteVoto*`.
+
+Per customizzarlo cambia i campi nello stesso ordine: input in `StudentiVotiSection.tsx`, state/payload in `useStudentiVoti.ts`, tipo TS in `StudenteVoto.ts`, entity/service/controller Java nei file `StudenteVoto*`. Le chiavi del `URLSearchParams` devono restare identiche agli `@RequestParam`.
