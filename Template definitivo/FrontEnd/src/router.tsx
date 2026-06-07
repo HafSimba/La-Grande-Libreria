@@ -1,7 +1,8 @@
 import { createBrowserRouter } from 'react-router'
 
-import { ContattiPage } from './pages/ContattiPage'
+import { AdminPage } from './pages/AdminPage'
 import { HomePage } from './pages/HomePage'
+import { LoginPage } from './pages/LoginPage'
 
 // CUSTOM ESAME:
 // aggiungi qui eventuali pagine richieste dalla traccia.
@@ -12,8 +13,12 @@ const routes = [
     element: <HomePage />,
   },
   {
-    path: '/contatti',
-    element: <ContattiPage />,
+    path: '/login',
+    element: <LoginPage />,
+  },
+  {
+    path: '/admin',
+    element: <AdminPage />,
   },
 ]
 

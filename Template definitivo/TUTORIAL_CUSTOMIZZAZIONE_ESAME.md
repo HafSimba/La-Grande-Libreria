@@ -26,10 +26,13 @@ Durante l'esame puoi lasciarlo cosi se hai poco tempo, oppure rinominarlo per es
 ## 2. Cambia i testi della landing
 
 File principali:
-- `FrontEnd/src/pages/HomePage.tsx`
 - `FrontEnd/src/components/Hero.tsx`
 - `FrontEnd/src/components/Cards.tsx`
 - `FrontEnd/src/components/Footer.tsx`
+- `FrontEnd/src/sections/HeroSection.tsx`
+- `FrontEnd/src/sections/InfoSection.tsx`
+- `FrontEnd/src/sections/CardsSection.tsx`
+- `FrontEnd/src/sections/ContactFormSection.tsx`
 
 Cambia:
 - titolo hero;
@@ -39,6 +42,20 @@ Cambia:
 - testo footer.
 
 Non partire dal CSS: prima sistema contenuti e sezioni richieste.
+
+## 2.1. Aggiungi o rimuovi sezioni
+
+La `HomePage.tsx` deve solo assemblare sezioni.
+
+Per rimuovere una sezione:
+1. elimina il tag da `HomePage.tsx`;
+2. elimina l'import in alto;
+3. se non serve piu, cancella il file relativo in `src/sections`.
+
+Per aggiungere una sezione:
+1. crea un nuovo file in `src/sections`, per esempio `CatalogoSection.tsx`;
+2. importa la sezione in `HomePage.tsx`;
+3. inserisci il tag nella posizione desiderata.
 
 ## 3. Cambia il form frontend
 
@@ -148,12 +165,13 @@ deve combaciare con:
 ## 6. Aggiorna la pagina lista
 
 File:
-- `FrontEnd/src/pages/ContattiPage.tsx`
+- `FrontEnd/src/pages/AdminPage.tsx`
+- `FrontEnd/src/sections/AdminContattiSection.tsx`
 - `FrontEnd/src/types/Contatto.ts`
 - `FrontEnd/src/hooks/useApi.ts`
 
 Aggiorna il tipo TypeScript con i campi che arrivano dal backend.
-Poi cambia il rendering della lista per mostrare i dati richiesti dalla traccia.
+Poi cambia il rendering delle card admin per mostrare i dati richiesti dalla traccia.
 
 Esempio:
 
@@ -214,8 +232,20 @@ Test manuale:
 - Frontend e backend usano gli stessi endpoint.
 - Build frontend e test backend passano.
 
-## Modulo opzionale studenti/voti
+## Login e pagina admin
 
-Il modulo `StudentiVotiSection` serve per tracce in cui devi inserire dati, mostrarli dal database e filtrarli. Per usarlo tieni in `HomePage.tsx` l'import e il tag `<StudentiVotiSection />`; per rimuoverlo elimina quel tag/import e, se non serve proprio, cancella anche `components/StudentiVotiSection.tsx`, `hooks/useStudentiVoti.ts`, `types/StudenteVoto.ts` e i file backend `StudenteVoto*`.
+Il template contiene una login page semplice:
 
-Per customizzarlo cambia i campi nello stesso ordine: input in `StudentiVotiSection.tsx`, state/payload in `useStudentiVoti.ts`, tipo TS in `StudenteVoto.ts`, entity/service/controller Java nei file `StudenteVoto*`. Le chiavi del `URLSearchParams` devono restare identiche agli `@RequestParam`.
+- `FrontEnd/src/pages/LoginPage.tsx`
+- `FrontEnd/src/components/LoginForm.tsx`
+- `FrontEnd/src/hooks/useLogin.ts`
+- backend `Utente.java`, `UtenteRepository.java`, `UtenteService.java`, `UtenteController.java`
+
+La registrazione salva un utente nel database. Il login passa solo se email e password combaciano con una riga salvata. Per rimuovere login/admin elimina le route `/login` e `/admin` da `router.tsx`, il link dalla navbar, i file frontend login/admin e i file backend `Utente*`.
+
+La pagina admin mostra i dati inseriti dal form pubblico:
+
+- `FrontEnd/src/pages/AdminPage.tsx`
+- `FrontEnd/src/sections/AdminContattiSection.tsx`
+
+Per cambiare le card admin aggiorna `AdminContattiSection.tsx` dopo aver cambiato campi in `Contatto.ts`, `Form.tsx`, `useForm.ts` e nei file backend `Contatto*`.

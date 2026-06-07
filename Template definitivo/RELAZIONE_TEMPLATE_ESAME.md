@@ -12,11 +12,11 @@ Il flusso principale del progetto parte dalla landing page disponibile alla rott
 
 La pagina iniziale presenta una navigazione superiore che consente di raggiungere rapidamente le sezioni principali della pagina tramite link ad ancora. Il visitatore puo consultare la sezione introduttiva, leggere i contenuti descrittivi, visualizzare le card informative e compilare il modulo di invio dati.
 
-Nel template e presente anche una pagina dedicata alla visualizzazione dei dati ricevuti dal backend, raggiungibile tramite la rotta `/contatti`. Questa pagina usa una navbar alternativa per tornare alla home e mostra gli elementi salvati nel database.
+Nel template e presente anche una pagina di login raggiungibile tramite la rotta `/login`. Da questa pagina e possibile registrare un utente nel database ed effettuare l'accesso con le stesse credenziali salvate.
 
-E inoltre presente un modulo opzionale per casi d'esame piu articolati, basato su inserimento, listaggio e filtro di elementi. Nel template questo modulo e rappresentato dalla sezione `StudentiVotiSection`, che permette di inserire nominativi di studenti, materia, voto e classe, visualizzarli in lista e filtrarli per materia e classe.
+Se l'accesso va a buon fine, il frontend porta alla pagina `/admin`, dove vengono mostrati in card i dati inseriti dagli utenti tramite il form pubblico della landing.
 
-CUSTOM: se la traccia richiede un dominio diverso, sostituire "contatti", "studenti", "voti", "materie" e "classi" con i nomi coerenti con il progetto, ad esempio eventi, prodotti, donazioni, proposte o prenotazioni.
+CUSTOM: se la traccia richiede un dominio diverso, sostituire "contatti", "utenti" e "admin" con i nomi coerenti con il progetto, ad esempio eventi, prodotti, donazioni, proposte o prenotazioni.
 
 ## Struttura sezioni e organizzazione pagine
 
@@ -25,7 +25,8 @@ Il frontend e organizzato con una struttura semplice, simile al progetto di rife
 La cartella `src/pages` contiene le pagine principali:
 
 - `HomePage.tsx`: pagina principale della landing.
-- `ContattiPage.tsx`: pagina dedicata al listaggio dei dati ricevuti dal backend.
+- `LoginPage.tsx`: pagina di registrazione e accesso admin.
+- `AdminPage.tsx`: pagina che mostra i dati inseriti dal form pubblico.
 
 La cartella `src/components` contiene i componenti dell'interfaccia:
 
@@ -35,37 +36,42 @@ La cartella `src/components` contiene i componenti dell'interfaccia:
 - `Cards.tsx`: gruppo di card informative personalizzabili.
 - `Form.tsx`: modulo base per invio dati al backend.
 - `Footer.tsx`: chiusura della pagina.
-- `StudentiVotiSection.tsx`: sezione opzionale completa con form, lista e filtro.
+- `LoginForm.tsx`: form per registrazione utente e login.
 
 La cartella `src/hooks` contiene la logica di stato e comunicazione:
 
 - `useForm.ts`: gestione del form base e invio POST al backend.
 - `useApi.ts`: gestione di una chiamata GET per recuperare liste di dati.
-- `useStudentiVoti.ts`: gestione completa del modulo opzionale con inserimento, lettura e filtro.
+- `useLogin.ts`: gestione dello stato dei form di registrazione e login.
 
 La cartella `src/types` contiene i tipi TypeScript:
 
 - `Contatto.ts`: tipo usato per i dati del form base.
-- `StudenteVoto.ts`: tipo usato per il modulo opzionale studenti/voti.
 
 La navigazione e definita in `src/router.tsx`, dove sono registrate le rotte principali del progetto. Il file `src/main.tsx` monta il `RouterProvider`, seguendo il pattern React Router.
 
-CUSTOM: durante l'esame e possibile rimuovere le sezioni non richieste togliendo l'import e il tag dalla `HomePage.tsx`. Per esempio, se non serve il modulo studenti/voti, rimuovere `<StudentiVotiSection />` e relativo import.
+La cartella `src/sections` contiene le sezioni della landing e dell'area admin:
+
+- `HeroSection.tsx`;
+- `InfoSection.tsx`;
+- `CardsSection.tsx`;
+- `ContactFormSection.tsx`;
+- `AdminContattiSection.tsx`.
+
+CUSTOM: durante l'esame e possibile rimuovere le sezioni non richieste togliendo l'import e il tag dalla `HomePage.tsx`. Per aggiungere una sezione, creare un nuovo file in `src/sections` e importarlo nella home.
 
 ## Componenti interfaccia utente
 
 L'interfaccia e stata divisa in componenti semplici e riutilizzabili.
 
-La `Navbar` contiene i collegamenti alle sezioni della landing e alla pagina di visualizzazione dati. La `Hero` contiene il messaggio principale e una call to action che porta al form. Il componente `Cards` permette di presentare informazioni, servizi, funzionalita o elementi in evidenza. Il componente `Form` contiene input controllati collegati all'hook `useForm`.
+La `Navbar` contiene i collegamenti alle sezioni della landing e alla pagina di login. La `Hero` contiene il messaggio principale e una call to action che porta al form. Il componente `Cards` permette di presentare informazioni, servizi, funzionalita o elementi in evidenza. Il componente `Form` contiene input controllati collegati all'hook `useForm`.
 
-La sezione `StudentiVotiSection` e stata costruita come blocco autonomo. Contiene:
+Il componente `LoginForm` contiene due blocchi:
 
-- un form per inserire dati;
-- una lista degli elementi salvati;
-- un form di filtro;
-- un pulsante per ricaricare tutti gli elementi.
+- un form per registrare un utente nel database;
+- un form per accedere all'area admin usando le credenziali salvate.
 
-Questa scelta consente di mantenere il codice modulare: se la traccia richiede soltanto un form semplice, la sezione opzionale puo essere esclusa; se invece richiede gestione dati piu completa, la sezione puo essere personalizzata modificando campi, label, endpoint e tipo dati.
+La sezione `AdminContattiSection` mostra i dati ricevuti dal form pubblico in card. Questa scelta consente di separare la parte pubblica dalla parte di consultazione dati.
 
 Lo stile principale e contenuto in `src/index.css`, con classi generiche come `page-section`, `container`, `cards`, `form`, `list` e `button`, in modo da rendere l'interfaccia facilmente adattabile senza modificare la logica applicativa.
 
@@ -107,15 +113,15 @@ Spring Web MVC espone gli endpoint REST. Spring Data JPA gestisce la persistenza
 
 Il frontend e stato organizzato secondo una struttura a cartelle semplice: `components`, `pages`, `hooks` e `types`.
 
-In `main.tsx` e stato configurato il montaggio dell'applicazione tramite `RouterProvider`. In `router.tsx` sono state definite le rotte principali: la home `/` e la pagina secondaria `/contatti`.
+In `main.tsx` e stato configurato il montaggio dell'applicazione tramite `RouterProvider`. In `router.tsx` sono state definite le rotte principali: la home `/`, la pagina login `/login` e la pagina admin `/admin`.
 
-La `HomePage` assembla le sezioni principali della landing: navbar, hero, sezione descrittiva, card informative, form e footer. Ogni sezione e stata costruita tramite componenti separati, cosi da poter essere rimossa o modificata rapidamente in base alla traccia.
+La `HomePage` assembla le sezioni principali della landing: navbar, hero, sezione descrittiva, card informative, form e footer. Ogni sezione e stata spostata in un file dedicato dentro `src/sections`, cosi da poter essere rimossa o modificata rapidamente in base alla traccia.
 
 Il form base e stato sviluppato con campi controllati. La logica di stato e invio e contenuta in `useForm.ts`, dove ogni campo ha il proprio `useState` e il proprio handler. Al submit, i dati vengono trasformati in `URLSearchParams` e inviati al backend con content type `application/x-www-form-urlencoded`.
 
-Per la lettura dei dati e stato creato `useApi.ts`, un hook che effettua una richiesta GET e salva il risultato in uno stato React. La pagina `ContattiPage` usa questo hook per mostrare gli elementi salvati.
+Per la lettura dei dati e stato creato `useApi.ts`, un hook che effettua una richiesta GET e salva il risultato in uno stato React. La sezione `AdminContattiSection` usa questo hook per mostrare nell'area admin gli elementi salvati.
 
-E stata poi aggiunta una sezione opzionale `StudentiVotiSection`, pensata per tracce che richiedono sia inserimento dati sia visualizzazione degli elementi salvati nel database. La logica della sezione e isolata in `useStudentiVoti.ts`, mentre il tipo dati e definito in `StudenteVoto.ts`.
+E stata poi aggiunta una pagina login con `LoginPage`, `LoginForm` e `useLogin`. La registrazione invia i dati utente al backend, mentre il login verifica email e password salvate nel database e, in caso positivo, porta alla pagina admin.
 
 CUSTOM: dopo aver ricevuto la traccia, aggiornare i nomi dei campi, i testi visualizzati e gli endpoint nei file frontend interessati.
 
@@ -137,14 +143,14 @@ Per il modulo base sono presenti:
 
 L'entity rappresenta i dati da salvare. Il repository estende `JpaRepository` e fornisce le operazioni base di persistenza. Il service crea l'oggetto e lo salva tramite repository. Il controller espone gli endpoint REST per l'inserimento e la lettura dei dati.
 
-Per il modulo opzionale studenti/voti sono stati creati file separati:
+Per il login admin sono stati creati file separati:
 
-- `StudenteVoto.java`;
-- `StudenteVotoRepository.java`;
-- `StudenteVotoService.java`;
-- `StudenteVotoController.java`.
+- `Utente.java`;
+- `UtenteRepository.java`;
+- `UtenteService.java`;
+- `UtenteController.java`.
 
-Questi file permettono di gestire un caso piu completo: inserimento dati, lettura completa e filtro. Il controller espone endpoint separati sotto `/studenti-voti`, mantenendo indipendente questo modulo dal form base.
+Questi file permettono di registrare un utente e controllare le credenziali in fase di login. Il controller espone endpoint separati sotto `/utenti`, mantenendo indipendente questo modulo dal form pubblico.
 
 Gli endpoint POST ricevono dati tramite `@RequestParam`, in coerenza con l'invio frontend tramite `URLSearchParams`. Gli endpoint GET restituiscono liste JSON che vengono poi lette dal frontend.
 
@@ -214,31 +220,17 @@ Per testare il modulo base:
 2. Aprire `http://localhost:5173`.
 3. Compilare il form presente nella landing.
 4. Inviare i dati.
-5. Aprire la pagina `/contatti`.
-6. Verificare che i dati inseriti vengano mostrati nella lista.
+5. Registrare un utente dalla pagina `/login`.
+6. Eseguire il login con le credenziali appena registrate.
+7. Verificare che la pagina `/admin` mostri in card i dati inseriti dal form.
 
 Endpoint coinvolti:
 
 ```text
 POST http://localhost:8080/contatti/invia
 GET  http://localhost:8080/contatti/tutti
-```
-
-Per testare il modulo opzionale studenti/voti:
-
-1. Aprire la home.
-2. Raggiungere la sezione studenti/voti.
-3. Inserire nome studente, materia, voto e classe.
-4. Verificare che il nuovo elemento venga aggiunto alla lista.
-5. Usare i campi filtro per cercare per materia o classe.
-6. Premere "Mostra tutti" per ricaricare l'elenco completo.
-
-Endpoint coinvolti:
-
-```text
-POST http://localhost:8080/studenti-voti/inserisci
-GET  http://localhost:8080/studenti-voti/tutti
-GET  http://localhost:8080/studenti-voti/filtra?materia=...&classe=...
+POST http://localhost:8080/utenti/registra
+POST http://localhost:8080/utenti/login
 ```
 
 Verifiche tecniche consigliate:
@@ -256,5 +248,4 @@ Backend:
 .\mvnw.cmd test
 ```
 
-CUSTOM: nella relazione finale indicare solo gli endpoint e i moduli effettivamente mantenuti nella consegna. Se una sezione opzionale viene rimossa, eliminare anche il relativo paragrafo dalla relazione.
-
+CUSTOM: nella relazione finale indicare solo gli endpoint e i moduli effettivamente mantenuti nella consegna. Se login/admin non servono, eliminare anche i relativi paragrafi dalla relazione.

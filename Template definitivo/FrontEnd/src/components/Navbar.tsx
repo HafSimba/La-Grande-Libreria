@@ -11,8 +11,8 @@ const navItems = [
 export function Navbar() {
     const navigate = useNavigate()
 
-    const handleContatti = () => {
-        navigate('/contatti')
+    const handleLogin = () => {
+        navigate('/login')
     }
 
     return (
@@ -32,8 +32,8 @@ export function Navbar() {
                         </li>
                     ))}
                     <li>
-                        <a className="landing-navbar__link" onClick={handleContatti}>
-                            Contatti
+                        <a className="landing-navbar__link" onClick={handleLogin}>
+                            Login
                         </a>
                     </li>
                 </ul>
