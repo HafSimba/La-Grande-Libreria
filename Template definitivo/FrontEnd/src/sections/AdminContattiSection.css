@@ -1,0 +1,22 @@
+/* CUSTOM ESAME:
+   gap cambia la distanza tra le card della lista admin. */
+.list {
+  display: grid;
+  gap: 16px;
+}
+
+/* CUSTOM ESAME:
+   questa card mostra un elemento letto dal database.
+   padding e border-radius modificano dimensione e arrotondamento. */
+.list__item {
+  border: 1px solid rgba(22, 43, 66, 0.14);
+  border-radius: 8px;
+  padding: 22px;
+  background: white;
+  box-shadow: 0 12px 28px -22px rgba(11, 30, 48, 0.45);
+}
+
+.list__title {
+  margin: 0 0 12px;
+  color: #0d2438;
+}

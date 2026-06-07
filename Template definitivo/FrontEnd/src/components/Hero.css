@@ -1,0 +1,60 @@
+/* CUSTOM ESAME:
+   min-height definisce l'altezza della hero.
+   background e il colore visibile dietro l'immagine. */
+.hero {
+  position: relative;
+  min-height: 520px;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #0d2438;
+}
+
+/* CUSTOM ESAME:
+   opacity scurisce o schiarisce l'immagine sotto al testo.
+   object-fit: cover mantiene l'immagine piena senza deformarla. */
+.hero__image {
+  width: 100%;
+  height: 520px;
+  display: block;
+  object-fit: cover;
+  opacity: 0.45;
+}
+
+.hero__content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+  color: white;
+}
+
+/* CUSTOM ESAME:
+   max-width evita titoli troppo larghi.
+   font-size cambia la grandezza del titolo principale. */
+.hero__title {
+  margin: 0;
+  max-width: 820px;
+  font-size: 3rem;
+}
+
+.hero__subtitle {
+  max-width: 660px;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 760px) {
+  .hero,
+  .hero__image {
+    min-height: 420px;
+    height: 420px;
+  }
+
+  .hero__title {
+    font-size: 2.1rem;
+  }
+}

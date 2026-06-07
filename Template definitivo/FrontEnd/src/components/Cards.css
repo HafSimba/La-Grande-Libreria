@@ -1,0 +1,26 @@
+/* CUSTOM ESAME:
+   modifica le colonne se vuoi mostrare piu o meno card per riga.
+   Esempio: repeat(2, 1fr) mostra due card su desktop. */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+/* CUSTOM ESAME:
+   padding cambia lo spazio interno della card.
+   border-radius arrotonda gli angoli.
+   box-shadow gestisce l'ombra sotto la card. */
+.cards__item {
+  border: 1px solid rgba(22, 43, 66, 0.14);
+  border-radius: 8px;
+  padding: 22px;
+  background: white;
+  box-shadow: 0 12px 28px -22px rgba(11, 30, 48, 0.45);
+}
+
+@media (max-width: 760px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}

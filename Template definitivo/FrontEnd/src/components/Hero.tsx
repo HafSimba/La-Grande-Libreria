@@ -1,3 +1,5 @@
+import './Hero.css'
+
 type HeroProps = {
   imgSrc: string
 }

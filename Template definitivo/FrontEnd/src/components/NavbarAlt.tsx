@@ -1,3 +1,4 @@
+import './NavbarAlt.css'
 import { useNavigate } from 'react-router'
 
 export const NavbarAlt = () => {

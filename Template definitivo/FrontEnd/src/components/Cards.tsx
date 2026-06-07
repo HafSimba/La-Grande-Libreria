@@ -1,3 +1,5 @@
+import './Cards.css'
+
 type Card = {
   title: string
   description: string

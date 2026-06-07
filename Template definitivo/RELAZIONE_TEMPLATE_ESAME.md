@@ -1,251 +1,218 @@
-# Relazione tecnica - Template progetto esame
+Relazione tecnica del progetto
 
-## Nota di personalizzazione
+Introduzione
 
-Questo documento e una base modificabile per la relazione finale d'esame. Le parti indicate con `CUSTOM` possono essere aggiornate in base alla traccia ricevuta, al nome del progetto, ai contenuti grafici e alle funzionalita effettivamente mantenute nella consegna.
+Il progetto e stato realizzato come applicazione full stack composta da un frontend sviluppato in React e TypeScript e da un backend sviluppato in Java con Spring Boot, collegato a un database MySQL.
 
-Il progetto e stato sviluppato come template full stack riutilizzabile, pensato per essere adattato rapidamente a tracce diverse mantenendo una struttura semplice e coerente tra frontend e backend.
+L'obiettivo del lavoro e stato quello di costruire una piattaforma web coerente con la traccia assegnata. Il progetto comprende una landing page pubblica, un modulo per l'invio dei dati, una semplice area di accesso e una pagina admin per visualizzare le informazioni raccolte.
 
-## Flusso di navigazione
+In sede d'esame questa introduzione potra essere aggiornata inserendo il nome reale del progetto e lo scopo specifico richiesto dalla traccia.
 
-Il flusso principale del progetto parte dalla landing page disponibile alla rotta `/`.
+Progettazione UI e UX tramite Figma
 
-La pagina iniziale presenta una navigazione superiore che consente di raggiungere rapidamente le sezioni principali della pagina tramite link ad ancora. Il visitatore puo consultare la sezione introduttiva, leggere i contenuti descrittivi, visualizzare le card informative e compilare il modulo di invio dati.
+La prima fase del lavoro e stata dedicata alla progettazione dell'interfaccia utente. Sono partito dall'analisi della traccia per individuare il pubblico di riferimento, le informazioni principali da comunicare e le azioni che l'utente avrebbe dovuto compiere all'interno del sito.
 
-Nel template e presente anche una pagina di login raggiungibile tramite la rotta `/login`. Da questa pagina e possibile registrare un utente nel database ed effettuare l'accesso con le stesse credenziali salvate.
+Ho realizzato il prototipo in Figma seguendo una struttura semplice e leggibile, organizzata per sezioni. La scelta principale e stata quella di progettare una landing page chiara, con una sezione iniziale di presentazione, contenuti informativi, elementi in evidenza e un modulo finale per l'invio dei dati richiesti.
 
-Se l'accesso va a buon fine, il frontend porta alla pagina `/admin`, dove vengono mostrati in card i dati inseriti dagli utenti tramite il form pubblico della landing.
+Dal punto di vista UI e UX ho cercato di mantenere una navigazione lineare. L'utente deve capire subito lo scopo del sito, leggere le informazioni essenziali e arrivare facilmente all'azione principale. I colori, le spaziature, la disposizione delle sezioni e lo stile delle card sono stati pensati per adattarsi al tema della traccia e per rendere la consultazione semplice anche da dispositivi diversi.
 
-CUSTOM: se la traccia richiede un dominio diverso, sostituire "contatti", "utenti" e "admin" con i nomi coerenti con il progetto, ad esempio eventi, prodotti, donazioni, proposte o prenotazioni.
+Questa parte potra essere personalizzata durante l'esame aggiungendo il link al prototipo Figma e descrivendo le scelte grafiche specifiche della traccia, come palette colori, immagini, tono comunicativo, disposizione delle sezioni e motivazione delle scelte visuali.
 
-## Struttura sezioni e organizzazione pagine
+Riproduzione del design nel frontend
 
-Il frontend e organizzato con una struttura semplice, simile al progetto di riferimento usato durante il corso.
+Dopo la fase di prototipazione, ho riprodotto il layout in React mantenendo la stessa organizzazione prevista nel prototipo Figma. Ho suddiviso la pagina in sezioni indipendenti per rendere il codice piu ordinato, leggibile e facilmente modificabile.
 
-La cartella `src/pages` contiene le pagine principali:
+La home page non contiene direttamente tutta la struttura grafica, ma assembla sezioni separate. Questo mi permette di aggiornare o rimuovere una parte della pagina senza dover modificare tutto il file principale.
 
-- `HomePage.tsx`: pagina principale della landing.
-- `LoginPage.tsx`: pagina di registrazione e accesso admin.
-- `AdminPage.tsx`: pagina che mostra i dati inseriti dal form pubblico.
+Le sezioni principali utilizzate sono:
 
-La cartella `src/components` contiene i componenti dell'interfaccia:
+1. HeroSection, per la parte iniziale con immagine e call to action
+2. InfoSection, per la descrizione del progetto
+3. CardsSection, per presentare elementi informativi o funzionalita
+4. ContactFormSection, per raccogliere i dati dell'utente
+5. Footer, per la chiusura della pagina
 
-- `Navbar.tsx`: navigazione principale della landing.
-- `NavbarAlt.tsx`: navigazione semplificata per pagine secondarie.
-- `Hero.tsx`: sezione iniziale con immagine e call to action.
-- `Cards.tsx`: gruppo di card informative personalizzabili.
-- `Form.tsx`: modulo base per invio dati al backend.
-- `Footer.tsx`: chiusura della pagina.
-- `LoginForm.tsx`: form per registrazione utente e login.
+Se la traccia richiede sezioni diverse, posso aggiungere un nuovo file nella cartella src/sections e importarlo nella HomePage. In questo modo il progetto resta modulare e semplice da adattare.
 
-La cartella `src/hooks` contiene la logica di stato e comunicazione:
+Flusso di navigazione
 
-- `useForm.ts`: gestione del form base e invio POST al backend.
-- `useApi.ts`: gestione di una chiamata GET per recuperare liste di dati.
-- `useLogin.ts`: gestione dello stato dei form di registrazione e login.
+Il flusso di navigazione parte dalla pagina principale, cioe la landing page del progetto. Da qui l'utente puo leggere le informazioni principali e raggiungere le varie sezioni tramite la navbar.
 
-La cartella `src/types` contiene i tipi TypeScript:
+Dalla landing l'utente puo compilare il form pubblico. I dati inseriti vengono inviati al backend e salvati nel database.
 
-- `Contatto.ts`: tipo usato per i dati del form base.
+Ho previsto anche una pagina di login, dalla quale e possibile registrare un utente e successivamente accedere all'area admin. L'autenticazione e stata mantenuta semplice: il login riesce quando email e password corrispondono a credenziali gia presenti nel database.
 
-La navigazione e definita in `src/router.tsx`, dove sono registrate le rotte principali del progetto. Il file `src/main.tsx` monta il `RouterProvider`, seguendo il pattern React Router.
+Dopo il login, l'utente viene portato alla pagina admin, dove vengono mostrati in card i dati inviati tramite il form pubblico. Questa pagina ha lo scopo di permettere una consultazione rapida delle richieste o registrazioni ricevute.
 
-La cartella `src/sections` contiene le sezioni della landing e dell'area admin:
+Se nella traccia non sara richiesta un'area admin, questa parte potra essere rimossa dalla relazione. Se invece la pagina admin avra un nome o uno scopo diverso, bastera aggiornare la descrizione del flusso e delle pagine coinvolte.
 
-- `HeroSection.tsx`;
-- `InfoSection.tsx`;
-- `CardsSection.tsx`;
-- `ContactFormSection.tsx`;
-- `AdminContattiSection.tsx`.
+Struttura delle pagine e delle sezioni
 
-CUSTOM: durante l'esame e possibile rimuovere le sezioni non richieste togliendo l'import e il tag dalla `HomePage.tsx`. Per aggiungere una sezione, creare un nuovo file in `src/sections` e importarlo nella home.
+Ho organizzato il frontend distinguendo pagine, sezioni, componenti riutilizzabili, hook e tipi TypeScript.
 
-## Componenti interfaccia utente
+Ho scelto inoltre di separare anche i file CSS in base ai componenti e alle sezioni. In questo modo ogni componente mantiene vicino il proprio stile, mentre il file index.css resta dedicato soltanto agli stili globali, come il reset iniziale, il layout base delle sezioni, il container principale, i testi comuni e i pulsanti condivisi.
 
-L'interfaccia e stata divisa in componenti semplici e riutilizzabili.
+Questa scelta rende il progetto piu semplice da leggere e da modificare. Se durante l'esame devo cambiare lo stile del footer, della navbar, delle card o del form, posso aprire direttamente il file CSS corrispondente senza cercare dentro un unico file troppo grande.
 
-La `Navbar` contiene i collegamenti alle sezioni della landing e alla pagina di login. La `Hero` contiene il messaggio principale e una call to action che porta al form. Il componente `Cards` permette di presentare informazioni, servizi, funzionalita o elementi in evidenza. Il componente `Form` contiene input controllati collegati all'hook `useForm`.
+Le pagine principali sono:
 
-Il componente `LoginForm` contiene due blocchi:
+1. HomePage.tsx, che assembla la landing page
+2. LoginPage.tsx, che contiene registrazione e login
+3. AdminPage.tsx, che mostra i dati inseriti dagli utenti
 
-- un form per registrare un utente nel database;
-- un form per accedere all'area admin usando le credenziali salvate.
+Le sezioni si trovano nella cartella src/sections:
 
-La sezione `AdminContattiSection` mostra i dati ricevuti dal form pubblico in card. Questa scelta consente di separare la parte pubblica dalla parte di consultazione dati.
+1. HeroSection.tsx
+2. InfoSection.tsx
+3. CardsSection.tsx
+4. ContactFormSection.tsx
+5. AdminContattiSection.tsx
 
-Lo stile principale e contenuto in `src/index.css`, con classi generiche come `page-section`, `container`, `cards`, `form`, `list` e `button`, in modo da rendere l'interfaccia facilmente adattabile senza modificare la logica applicativa.
+I componenti riutilizzabili si trovano nella cartella src/components. Tra questi ci sono:
 
-CUSTOM: aggiornare testi, label, placeholder e contenuti delle card in base alla traccia. Se serve un layout diverso, modificare prima i componenti e poi rifinire il CSS.
+1. Navbar
+2. NavbarAlt
+3. Hero
+4. Cards
+5. Form
+6. LoginForm
+7. Footer
 
-## Tecnologie utilizzate per frontend e backend
+La logica di stato e comunicazione con il backend e stata spostata negli hook:
 
-### Frontend
+1. useForm, per il form pubblico
+2. useApi, per leggere liste dal backend
+3. useLogin, per registrazione e login
 
-Il frontend e stato sviluppato con:
+Questa organizzazione permette di mantenere i componenti piu puliti. Il componente si occupa della parte visiva, mentre l'hook gestisce stato, eventi e chiamate HTTP.
 
-- React;
-- TypeScript;
-- Vite;
-- React Router;
-- CSS;
-- Fetch API nativa.
+Componenti dell'interfaccia utente
 
-React e TypeScript sono stati usati per creare componenti tipizzati e mantenere una struttura chiara. Vite e stato usato come ambiente di sviluppo e build. React Router gestisce la navigazione tra home e pagine secondarie. Le chiamate HTTP sono state realizzate con `fetch`, senza introdurre librerie esterne, per mantenere il codice semplice e coerente con il percorso del corso.
+La Navbar e stata sviluppata per permettere all'utente di raggiungere le sezioni principali della pagina e la login page. La Hero rappresenta la prima area visibile della landing e contiene il messaggio principale del progetto.
 
-### Backend
+La sezione informativa descrive lo scopo dell'applicazione, mentre le card sono state pensate per mostrare punti di forza, servizi, eventi, prodotti o contenuti in evidenza in base alla traccia.
 
-Il backend e stato sviluppato con:
+Il componente Form contiene i campi controllati per l'invio dei dati. Ogni input e collegato allo stato dell'hook useForm, cosi da mantenere separata la logica dalla struttura HTML.
 
-- Java;
-- Spring Boot;
-- Maven;
-- Spring Web MVC;
-- Spring Data JPA;
-- MySQL;
-- Lombok;
-- SpringDoc OpenAPI.
+Il componente LoginForm contiene due blocchi: uno per registrare un utente e uno per effettuare l'accesso. Anche in questo caso la logica e stata isolata in un hook dedicato.
 
-Spring Web MVC espone gli endpoint REST. Spring Data JPA gestisce la persistenza su database. MySQL e il database previsto dalla configurazione. Lombok riduce il codice ripetitivo nelle entity. SpringDoc permette di consultare e testare gli endpoint tramite Swagger UI.
+Nella pagina admin, la sezione AdminContattiSection recupera i dati dal backend e li mostra sotto forma di card. Questa scelta rende la visualizzazione semplice e facilmente adattabile ad altri tipi di dati.
 
-## Descrizione attivita svolte
+In sede d'esame sara possibile aggiornare nomi e descrizioni dei componenti in base alle sezioni realmente usate nella consegna finale.
 
-### Sviluppo frontend
+Tecnologie utilizzate
 
-Il frontend e stato organizzato secondo una struttura a cartelle semplice: `components`, `pages`, `hooks` e `types`.
+Frontend
 
-In `main.tsx` e stato configurato il montaggio dell'applicazione tramite `RouterProvider`. In `router.tsx` sono state definite le rotte principali: la home `/`, la pagina login `/login` e la pagina admin `/admin`.
+Per il frontend ho utilizzato React, TypeScript, Vite, React Router, CSS e Fetch API.
 
-La `HomePage` assembla le sezioni principali della landing: navbar, hero, sezione descrittiva, card informative, form e footer. Ogni sezione e stata spostata in un file dedicato dentro `src/sections`, cosi da poter essere rimossa o modificata rapidamente in base alla traccia.
+Ho scelto React per costruire l'interfaccia tramite componenti riutilizzabili. TypeScript mi ha permesso di definire tipi per i dati ricevuti dal backend, riducendo errori nella gestione delle informazioni. Vite e stato usato per creare e avviare velocemente il progetto frontend. React Router gestisce la navigazione tra home, login e admin.
 
-Il form base e stato sviluppato con campi controllati. La logica di stato e invio e contenuta in `useForm.ts`, dove ogni campo ha il proprio `useState` e il proprio handler. Al submit, i dati vengono trasformati in `URLSearchParams` e inviati al backend con content type `application/x-www-form-urlencoded`.
+Le chiamate HTTP sono state realizzate con fetch, senza librerie esterne, per mantenere il codice semplice e coerente con quanto svolto durante il corso.
 
-Per la lettura dei dati e stato creato `useApi.ts`, un hook che effettua una richiesta GET e salva il risultato in uno stato React. La sezione `AdminContattiSection` usa questo hook per mostrare nell'area admin gli elementi salvati.
+Backend
 
-E stata poi aggiunta una pagina login con `LoginPage`, `LoginForm` e `useLogin`. La registrazione invia i dati utente al backend, mentre il login verifica email e password salvate nel database e, in caso positivo, porta alla pagina admin.
+Per il backend ho utilizzato Java, Spring Boot, Spring Web MVC, Spring Data JPA, Maven, MySQL, Lombok e SpringDoc OpenAPI.
 
-CUSTOM: dopo aver ricevuto la traccia, aggiornare i nomi dei campi, i testi visualizzati e gli endpoint nei file frontend interessati.
+Spring Boot mi ha permesso di creare rapidamente un backend REST. Spring Web MVC e stato usato per definire i controller e gli endpoint. Spring Data JPA gestisce il salvataggio e la lettura dei dati dal database MySQL. Lombok e stato utilizzato per ridurre il codice ripetitivo nelle entity. SpringDoc OpenAPI permette di consultare gli endpoint tramite Swagger UI.
 
-### Sviluppo backend
+Sviluppo frontend
 
-Il backend e stato organizzato secondo il pattern a livelli:
+Nello sviluppo frontend ho iniziato configurando il routing dell'applicazione. Nel file router.tsx ho definito le rotte principali:
 
-- entity;
-- repository;
-- service;
-- controller REST.
+1. la pagina home, per la landing page
+2. la pagina login, per registrazione e accesso
+3. la pagina admin, per visualizzare i dati salvati
 
-Per il modulo base sono presenti:
+Successivamente ho sviluppato la home page, suddividendola in sezioni dedicate. Ho mantenuto HomePage.tsx come file di assemblaggio, evitando di inserire tutta la struttura della landing in un unico file. Questa scelta rende il codice piu ordinato e piu semplice da personalizzare.
 
-- `Contatto.java`;
-- `ContattoRepository.java`;
-- `ContattoService.java`;
-- `ContattoController.java`.
+Per quanto riguarda lo stile, inizialmente le regole CSS potevano essere raccolte in un unico file globale. Ho poi preferito organizzare meglio il progetto creando un file CSS dedicato per ogni componente principale. Per esempio, lo stile del footer si trova nel file Footer.css, quello delle card nel file Cards.css, quello del form nel file Form.css e quello della hero nel file Hero.css.
 
-L'entity rappresenta i dati da salvare. Il repository estende `JpaRepository` e fornisce le operazioni base di persistenza. Il service crea l'oggetto e lo salva tramite repository. Il controller espone gli endpoint REST per l'inserimento e la lettura dei dati.
+Il file index.css rimane comunque presente, ma viene usato solo per le regole comuni a tutta l'applicazione. Questa divisione segue la stessa logica usata per i componenti React: ogni parte del progetto ha un compito preciso e puo essere modificata senza influenzare inutilmente il resto dell'interfaccia.
 
-Per il login admin sono stati creati file separati:
+Il form pubblico e stato sviluppato come componente controllato. Per ogni campo ho creato uno stato e un handler nell'hook useForm. Al submit, i dati vengono inseriti in un oggetto URLSearchParams e inviati al backend con metodo POST e content type application/x-www-form-urlencoded.
 
-- `Utente.java`;
-- `UtenteRepository.java`;
-- `UtenteService.java`;
-- `UtenteController.java`.
+Per leggere i dati salvati ho creato l'hook useApi, che riceve un URL, esegue una chiamata GET e salva il risultato in uno stato React. Questo hook viene usato nella sezione admin per mostrare le card con i dati ricevuti dal form.
 
-Questi file permettono di registrare un utente e controllare le credenziali in fase di login. Il controller espone endpoint separati sotto `/utenti`, mantenendo indipendente questo modulo dal form pubblico.
+Infine ho creato la pagina login. La registrazione invia nome, email e password al backend. Il login invia email e password e, se il backend restituisce un utente valido, il frontend reindirizza alla pagina admin.
 
-Gli endpoint POST ricevono dati tramite `@RequestParam`, in coerenza con l'invio frontend tramite `URLSearchParams`. Gli endpoint GET restituiscono liste JSON che vengono poi lette dal frontend.
+Sviluppo backend
 
-CUSTOM: se la traccia richiede un dominio diverso, duplicare o rinominare il modulo piu simile, aggiornando entity, repository, service, controller, tipo frontend, hook e componente UI.
+Il backend e stato strutturato seguendo un'organizzazione a livelli:
 
-## Istruzioni per avviare il progetto
+1. entity
+2. repository
+3. service
+4. controller
 
-### Avvio backend
+Ho creato una prima entity per rappresentare i dati inviati dal form pubblico. Questa entity viene salvata nel database tramite un repository JPA. La logica di creazione e salvataggio e contenuta nel service, mentre il controller espone gli endpoint REST.
 
-Aprire un terminale nella cartella:
+Per il form pubblico sono stati realizzati endpoint per inserire un nuovo dato e leggere tutti i dati salvati.
 
-```powershell
-cd "Template definitivo/backend"
-```
+Ho poi creato un secondo modulo dedicato agli utenti. L'entity Utente contiene nome, email e password. Il repository permette di cercare un utente in base a email e password. Il service contiene la logica di registrazione e login, mentre il controller espone gli endpoint dedicati alla registrazione e all'accesso.
 
-Avviare il backend:
+Ho mantenuto il metodo di comunicazione semplice. Il frontend invia i dati con URLSearchParams e il backend li riceve tramite RequestParam. In questo modo i nomi dei campi restano chiari e devono combaciare tra frontend e backend.
 
-```powershell
-.\mvnw.cmd spring-boot:run
-```
+Se la traccia richiedera un dominio diverso, sara possibile rinominare le entity e aggiornare i campi in frontend e backend mantenendo lo stesso schema: entity, repository, service e controller.
 
-In alternativa, se il Maven Wrapper non parte nell'ambiente locale, usare Maven installato o il Maven gia disponibile nella cache del wrapper.
+Struttura dati e comunicazione frontend backend
 
-Il backend viene avviato su:
+La comunicazione tra frontend e backend avviene tramite richieste HTTP.
 
-```text
-http://localhost:8080
-```
+Per l'invio dei dati dal form pubblico viene usata una richiesta POST verso l'endpoint dei contatti. Per leggere i dati salvati e mostrarli nella pagina admin viene usata una richiesta GET verso l'endpoint che restituisce l'elenco dei contatti.
 
-Swagger UI e disponibile su:
+Per la gestione utenti vengono usate due richieste POST: una per registrare un nuovo utente e una per effettuare il login.
 
-```text
-http://localhost:8080/swagger-ui.html
-```
+Il backend restituisce oggetti JSON, che il frontend legge e mostra nelle card.
 
-### Avvio frontend
+La regola principale che ho seguito e stata mantenere allineati i nomi dei campi lungo tutto il flusso, partendo dagli input React, passando per i parametri inviati al backend, fino ai campi delle entity.
 
-Aprire un terminale nella cartella:
+Questa scelta rende piu semplice modificare il progetto in base alla traccia, perche ogni campo mantiene lo stesso nome nei vari livelli dell'applicazione.
 
-```powershell
-cd "Template definitivo/FrontEnd"
-```
+Istruzioni per avviare il progetto
 
-Installare le dipendenze se necessario:
+Backend
 
-```powershell
-npm install
-```
+Per avviare il backend apro un terminale nella cartella backend del progetto e lancio il comando di avvio Maven previsto dal progetto.
 
-Avviare il frontend:
+Il backend viene eseguito su http://localhost:8080.
 
-```powershell
-npm run dev
-```
+La documentazione Swagger UI e disponibile su http://localhost:8080/swagger-ui.html.
 
-Il frontend Vite viene avviato normalmente su:
+Frontend
 
-```text
-http://localhost:5173
-```
+Per avviare il frontend apro un terminale nella cartella FrontEnd del progetto.
 
-## Indicazioni per testare il servizio
+Se necessario installo le dipendenze con npm install.
 
-Per testare il modulo base:
+Successivamente avvio il progetto con npm run dev.
 
-1. Avviare backend e frontend.
-2. Aprire `http://localhost:5173`.
-3. Compilare il form presente nella landing.
-4. Inviare i dati.
-5. Registrare un utente dalla pagina `/login`.
-6. Eseguire il login con le credenziali appena registrate.
-7. Verificare che la pagina `/admin` mostri in card i dati inseriti dal form.
+Il frontend viene eseguito normalmente su http://localhost:5173.
 
-Endpoint coinvolti:
+Indicazioni per testare il servizio
 
-```text
-POST http://localhost:8080/contatti/invia
-GET  http://localhost:8080/contatti/tutti
-POST http://localhost:8080/utenti/registra
-POST http://localhost:8080/utenti/login
-```
+Per verificare il corretto funzionamento del progetto ho seguito questo flusso:
 
-Verifiche tecniche consigliate:
+1. Avvio il backend
+2. Avvio il frontend
+3. Apro la landing page
+4. Compilo il form pubblico e invio i dati
+5. Apro la pagina login
+6. Registro un utente
+7. Effettuo il login con le credenziali appena registrate
+8. Verifico che venga aperta la pagina admin
+9. Controllo che nella pagina admin siano presenti le card con i dati inseriti dal form
 
-Frontend:
+Per una verifica tecnica del frontend uso i comandi npm run build e npm run lint.
 
-```powershell
-npm run build
-npm run lint
-```
+Per una verifica tecnica del backend uso il comando Maven dedicato ai test.
 
-Backend:
+Nella relazione finale sara opportuno lasciare soltanto i test e gli endpoint realmente utilizzati nella consegna.
 
-```powershell
-.\mvnw.cmd test
-```
+Conclusione
 
-CUSTOM: nella relazione finale indicare solo gli endpoint e i moduli effettivamente mantenuti nella consegna. Se login/admin non servono, eliminare anche i relativi paragrafi dalla relazione.
+Il progetto e stato sviluppato con l'obiettivo di mantenere una struttura chiara, semplice da spiegare e facilmente modificabile. Ho separato le responsabilita tra frontend e backend, mantenendo componenti, hook, pagine e sezioni distinti.
+
+La scelta di usare un backend a livelli e un frontend a componenti mi permette di adattare il progetto rapidamente a tracce diverse, modificando campi, testi, sezioni ed endpoint senza dover riscrivere tutta l'applicazione.
+
+In sede d'esame questa conclusione potra essere completata aggiungendo eventuali funzionalita specifiche richieste dalla traccia e una breve valutazione personale del lavoro svolto.

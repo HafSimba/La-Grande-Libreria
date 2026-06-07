@@ -1,0 +1,32 @@
+/* CUSTOM ESAME:
+   max-width controlla quanto e largo il form.
+   Usa 100% se vuoi un form a tutta larghezza dentro la sezione. */
+.form-wrapper {
+  width: min(720px, 100%);
+}
+
+/* CUSTOM ESAME:
+   gap cambia la distanza verticale tra i campi. */
+.form {
+  display: grid;
+  gap: 16px;
+}
+
+.form__label {
+  display: grid;
+  gap: 8px;
+  font-weight: 700;
+}
+
+/* CUSTOM ESAME:
+   padding cambia l'altezza dei campi.
+   border-radius arrotonda gli input.
+   border cambia colore e spessore del bordo. */
+.form__input {
+  width: 100%;
+  border: 1px solid rgba(22, 43, 66, 0.22);
+  border-radius: 6px;
+  padding: 13px 14px;
+  color: #173651;
+  font: inherit;
+}

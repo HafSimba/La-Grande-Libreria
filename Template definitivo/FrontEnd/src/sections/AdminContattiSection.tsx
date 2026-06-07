@@ -1,3 +1,4 @@
+import './AdminContattiSection.css'
 import { useApi } from '../hooks/useApi'
 import type { Contatto } from '../types/Contatto'
 

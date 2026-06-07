@@ -1,3 +1,7 @@
+/* CUSTOM ESAME:
+   width allinea la navbar al contenuto della pagina.
+   padding cambia lo spazio interno.
+   border-radius arrotonda il contenitore della navbar. */
 .landing-navbar {
     width: min(1120px, 100%);
     margin: 0 auto;
@@ -14,6 +18,8 @@
     gap: 20px;
 }
 
+/* CUSTOM ESAME:
+   gap cambia la distanza tra logo e testo del brand. */
 .landing-navbar__brand {
     display: inline-flex;
     align-items: center;
@@ -22,6 +28,9 @@
     text-decoration: none;
 }
 
+/* CUSTOM ESAME:
+   width e height cambiano la dimensione del logo grafico.
+   background cambia il colore o gradiente del logo. */
 .landing-navbar__logo {
     width: 30px;
     height: 30px;
@@ -36,6 +45,8 @@
     letter-spacing: 0.3px;
 }
 
+/* CUSTOM ESAME:
+   gap cambia la distanza tra le voci di menu. */
 .landing-navbar__menu {
     list-style: none;
     margin: 0;
@@ -45,6 +56,9 @@
     gap: 22px;
 }
 
+/* CUSTOM ESAME:
+   color cambia il colore dei link.
+   border-bottom gestisce la linea che compare in hover. */
 .landing-navbar__link {
     color: #173651;
     text-decoration: none;
@@ -63,6 +77,7 @@
 }
 
 @media (max-width: 760px) {
+    /* Su mobile la navbar va a capo per evitare sovrapposizioni. */
     .landing-navbar {
         flex-direction: column;
         align-items: flex-start;
