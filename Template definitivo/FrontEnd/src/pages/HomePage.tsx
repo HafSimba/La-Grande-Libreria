@@ -2,6 +2,7 @@ import { Footer } from '../components/Footer'
 import { Navbar } from '../components/Navbar'
 import { CardsSection } from '../sections/CardsSection'
 import { ContactFormSection } from '../sections/ContactFormSection'
+import { DatabaseCardsSection } from '../sections/DatabaseCardsSection'
 import { HeroSection } from '../sections/HeroSection'
 import { InfoSection } from '../sections/InfoSection'
 
@@ -17,6 +18,7 @@ export const HomePage = () => {
       <InfoSection />
       <CardsSection />
       <ContactFormSection />
+      <DatabaseCardsSection />
       <Footer />
     </>
   )

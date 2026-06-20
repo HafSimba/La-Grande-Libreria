@@ -30,3 +30,23 @@
   color: #173651;
   font: inherit;
 }
+
+/* CUSTOM ESAME:
+   feedback mostra il risultato dell'invio del form.
+   Cambia background e color per adattarlo alla palette della traccia. */
+.form__feedback {
+  margin: 0;
+  border-radius: 6px;
+  padding: 12px 14px;
+  font-weight: 700;
+}
+
+.form__feedback--success {
+  background: #e6f7ef;
+  color: #17633a;
+}
+
+.form__feedback--error {
+  background: #fdecec;
+  color: #9f1f1f;
+}

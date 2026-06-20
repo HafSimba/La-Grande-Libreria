@@ -2,10 +2,14 @@ import './Navbar.css'
 import { useNavigate } from 'react-router'
 
 const navItems = [
+    // CUSTOM ESAME:
+    // aggiungi o rimuovi voci menu modificando questo array.
+    // Ogni href deve puntare all'id della sezione, ad esempio "#dati-database".
     { label: 'Home', href: '#hero' },
     { label: 'Chi Siamo', href: '#chi-siamo' },
     { label: 'Servizi', href: '#servizi' },
     { label: 'Partecipa', href: '#form' },
+    { label: 'Dati', href: '#dati-database' },
 ]
 
 export function Navbar() {

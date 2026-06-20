@@ -12,6 +12,8 @@ export const Form = () => {
     handleTelefono,
     messaggio,
     handleMessaggio,
+    feedback,
+    feedbackType,
   } = useForm()
 
   return (
@@ -76,6 +78,15 @@ export const Form = () => {
         </label>
 
         <input className="button" type="submit" value="Manda" />
+
+        {/* CUSTOM ESAME:
+            questo messaggio rassicura l'utente dopo l'invio.
+            Per cambiare testo e logica modifica feedback e feedbackType in hooks/useForm.ts. */}
+        {feedback !== '' && (
+          <p className={`form__feedback form__feedback--${feedbackType}`}>
+            {feedback}
+          </p>
+        )}
       </form>
     </div>
   )

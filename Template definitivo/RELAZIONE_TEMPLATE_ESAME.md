@@ -30,7 +30,8 @@ Le sezioni principali utilizzate sono:
 2. InfoSection, per la descrizione del progetto
 3. CardsSection, per presentare elementi informativi o funzionalita
 4. ContactFormSection, per raccogliere i dati dell'utente
-5. Footer, per la chiusura della pagina
+5. DatabaseCardsSection, per mostrare in card i dati letti dal database
+6. Footer, per la chiusura della pagina
 
 Se la traccia richiede sezioni diverse, posso aggiungere un nuovo file nella cartella src/sections e importarlo nella HomePage. In questo modo il progetto resta modulare e semplice da adattare.
 
@@ -67,6 +68,7 @@ Le sezioni si trovano nella cartella src/sections:
 3. CardsSection.tsx
 4. ContactFormSection.tsx
 5. AdminContattiSection.tsx
+6. DatabaseCardsSection.tsx
 
 I componenti riutilizzabili si trovano nella cartella src/components. Tra questi ci sono:
 
@@ -76,7 +78,8 @@ I componenti riutilizzabili si trovano nella cartella src/components. Tra questi
 4. Cards
 5. Form
 6. LoginForm
-7. Footer
+7. DatabaseCards
+8. Footer
 
 La logica di stato e comunicazione con il backend e stata spostata negli hook:
 
@@ -92,7 +95,11 @@ La Navbar e stata sviluppata per permettere all'utente di raggiungere le sezioni
 
 La sezione informativa descrive lo scopo dell'applicazione, mentre le card sono state pensate per mostrare punti di forza, servizi, eventi, prodotti o contenuti in evidenza in base alla traccia.
 
+Ho previsto anche una sezione dedicata alla visualizzazione dei dati salvati nel database. Questa sezione recupera le informazioni inviate tramite il form e le mostra sotto forma di card, mantenendo lo stesso stile grafico delle card informative presenti nella landing. In questo modo il progetto puo coprire sia il caso di semplice invio dati, sia il caso in cui la traccia richieda anche il listaggio degli elementi registrati.
+
 Il componente Form contiene i campi controllati per l'invio dei dati. Ogni input e collegato allo stato dell'hook useForm, cosi da mantenere separata la logica dalla struttura HTML.
+
+Nel form ho inserito anche un feedback visivo dopo l'invio. Questa scelta migliora l'esperienza utente perche permette alla persona di capire subito se l'operazione e andata a buon fine oppure se si e verificato un problema. In questo modo l'utente riceve una conferma chiara e non rimane con il dubbio che il form sia stato inviato correttamente.
 
 Il componente LoginForm contiene due blocchi: uno per registrare un utente e uno per effettuare l'accesso. Anche in questo caso la logica e stata isolata in un hook dedicato.
 
@@ -132,7 +139,11 @@ Il file index.css rimane comunque presente, ma viene usato solo per le regole co
 
 Il form pubblico e stato sviluppato come componente controllato. Per ogni campo ho creato uno stato e un handler nell'hook useForm. Al submit, i dati vengono inseriti in un oggetto URLSearchParams e inviati al backend con metodo POST e content type application/x-www-form-urlencoded.
 
+Dopo la chiamata al backend viene aggiornato uno stato di feedback. Se l'invio va a buon fine, il frontend mostra un messaggio positivo e svuota i campi del form. Se invece il backend restituisce un errore o il servizio non e disponibile, viene mostrato un messaggio di errore. Ho scelto questa soluzione per rendere l'interazione piu chiara e rassicurante, migliorando la soddisfazione dell'utente durante l'utilizzo del servizio.
+
 Per leggere i dati salvati ho creato l'hook useApi, che riceve un URL, esegue una chiamata GET e salva il risultato in uno stato React. Questo hook viene usato nella sezione admin per mostrare le card con i dati ricevuti dal form.
+
+Lo stesso meccanismo di lettura viene utilizzato anche nella sezione DatabaseCardsSection presente nella home page. In questo caso i dati salvati vengono mostrati in card identiche a quelle della sezione CardsSection, cosi da mantenere coerenza visiva tra contenuti statici e contenuti provenienti dal database.
 
 Infine ho creato la pagina login. La registrazione invia nome, email e password al backend. Il login invia email e password e, se il backend restituisce un utente valido, il frontend reindirizza alla pagina admin.
 
