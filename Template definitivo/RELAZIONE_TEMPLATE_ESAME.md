@@ -186,6 +186,12 @@ Backend
 
 Per avviare il backend apro un terminale nella cartella backend del progetto e lancio il comando di avvio Maven previsto dal progetto.
 
+Su Windows il comando e:
+
+```powershell
+.\mvnw.cmd spring-boot:run
+```
+
 Il backend viene eseguito su http://localhost:8080.
 
 La documentazione Swagger UI e disponibile su http://localhost:8080/swagger-ui.html.
