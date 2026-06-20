@@ -10,7 +10,9 @@ export const useApi = (url: string) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(url)
+        const response = await fetch(url, {
+          method: 'GET',
+        })
         if (!response.ok) throw new Error(`Errore: ${response.status}`)
         const result = await response.json()
         setData(result)
